@@ -92,5 +92,6 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
               logProb = logProb * num/denom;
           end
       end
-  end 
+  end
+  logProb = log2(logProb);
 return
