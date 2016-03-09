@@ -46,15 +46,51 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
 
   words = strsplit(' ', sentence);
 
-  % TODO: the student implements the following
-  % TODO: once upon a time there was a curmudgeonly orangutan named Jub-Jub.
+  % loop through words in the sentence
   for l=1:length(words)
+      % if first word
       if l==1
-           p = (LM.bi.SENTSTARTMARK.words{l} + delta) / (LM.uni.words{l-1} + delta*vocabSize);
+          % count(sentencestart, wt) or bigram (sentencestart, wt) + smoothing
+          num = LM.bi.SENTSTARTMARK.words{l} + delta;
+          
+          % count(sentencestart) or unigram (sentencestart)
+          denom = LM.uni.SENTSTARTMARK + delta;
+          
+          % check if 0/0
+          if num == 0 && denom == 0
+              p = 0;
+          else 
+              p = num/denom;
+          end
+          
+      % if last word
       elseif l == length(words)
-          p = p * ((LM.bi.words{l}.SENTENDMARK + delta) / (LM.uni.words{l-1} + delta*vocabSize));
+          % count(wt, endofsentence) or bigram (wt, endofsentence) + smoothing
+          num = (LM.bi.words{l}.SENTENDMARK + delta);
+          
+          % count(wt-1) or unigram (wt-1) + smoothing
+          denom = (LM.uni.words{l-1} + delta*vocabSize);
+          
+          %check if 0/0
+          if num == 0 && denom == 0
+              p = 0;
+          else 
+              p = p * num/denom;
+          end
+      % rest of the words
       else
-          p = p * ((LM.bi.words{l-1}.words{l} + delta)/ (LM.uni.words{l-1} + delta*vocabSize));
+          % count(wt-1, wt) or bigram (wt-1, wt) + smoothing
+          num = (LM.bi.words{l-1}.words{l} + delta);
+          
+          % count(wt-1) or unigram (wt-1) + smoothing
+          denom = (LM.uni.words{l-1} + delta*vocabSize);
+          
+          % check if 0/0
+          if num == 0 && denom == 0
+              p = 0;
+          else 
+              p = p * num/denom;
+          end
       end
   end 
 return
