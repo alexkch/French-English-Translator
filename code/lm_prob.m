@@ -58,9 +58,9 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
           
           % check if 0/0
           if num == 0 && denom == 0
-              p = 0;
+              logProb = 0;
           else 
-              p = num/denom;
+              logProb = num/denom;
           end
           
       % if last word
@@ -73,9 +73,9 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
           
           %check if 0/0
           if num == 0 && denom == 0
-              p = 0;
+              logProb = 0;
           else 
-              p = p * num/denom;
+              logProb = logProb * num/denom;
           end
       % rest of the words
       else
@@ -87,9 +87,9 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
           
           % check if 0/0
           if num == 0 && denom == 0
-              p = 0;
+              logProb = 0;
           else 
-              p = p * num/denom;
+              logProb = logProb * num/denom;
           end
       end
   end 
