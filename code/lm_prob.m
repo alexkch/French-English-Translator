@@ -50,11 +50,11 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
   % TODO: once upon a time there was a curmudgeonly orangutan named Jub-Jub.
   for l=1:length(words)
       if l==1
-           p = LM.bi.SENTSTARTMARK.words{l} / LM.uni.words{l-1};
+           p = (LM.bi.SENTSTARTMARK.words{l} + delta) / (LM.uni.words{l-1} + delta*vocabSize);
       elseif l == length(words)
-          p = p * LM.bi.words{l}.SENTENDMARK / LM.uni.words{l-1};
+          p = p * ((LM.bi.words{l}.SENTENDMARK + delta) / (LM.uni.words{l-1} + delta*vocabSize));
       else
-          p = p * (LM.bi.words{l-1}.words{l} / LM.uni.words{l-1});
+          p = p * ((LM.bi.words{l-1}.words{l} + delta)/ (LM.uni.words{l-1} + delta*vocabSize));
       end
   end 
 return
