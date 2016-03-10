@@ -40,10 +40,11 @@ function outSentence = preprocess( inSentence, language )
       outSentence = regexprep(outSentence, '\(w%\)', outPart{l}, 'once');
   end
       
-  outSentence = regexprep(outSentence, '[\(\)\"\?\!\,\:\;\<\>\=\+\\\/]', ' $0');
-  outSentence = regexprep(outSentence, '([\(\)\"\?\!\[\,\:\;\<\>\=\]\+\\\/])(\w)', '$1 $2');
-  outSentence = regexprep(outSentence, '(\.)(\w)', '$1 $2');
-  outSentence = regexprep(outSentence, '(\w)(\.)', '$1 $2');
+  outSentence = regexprep(outSentence, '[^a-zA-Z_0-9''\-]', ' $0');
+  outSentence = regexprep(outSentence, '([^a-zA-Z_0-9''\-])(\w|''|\-)', '$1 $2');
+  outSentence = regexprep(outSentence, '(?:\.(\s)){2,}', '\.\.\. ');
+  outSentence = regexprep(outSentence, '(\w)(''){2,}', '$1 $2');
+  outSentence = regexprep(outSentence, '(''){2,}(\w)', '$1 $2');
   %disp(outSentence);
   
   switch language
