@@ -62,5 +62,5 @@ function outSentence = preprocess( inSentence, language )
 
   % change unpleasant characters to codes that can be keys in dictionaries
 
-  outSentence = convertSymbols( outSentence );
+  %outSentence = convertSymbols( outSentence );
   outSentence = regexprep(outSentence, '\s+', ' '); 
