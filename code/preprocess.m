@@ -29,15 +29,28 @@ function outSentence = preprocess( inSentence, language )
   outSentence = inSentence;
 
   % perform language-agnostic changes
-  outSentence = regexprep(outSentence, '[\[\,\:\;\(\)\{\}\<\>\=\]\+\-\\\/]', ' $0');
+  outPart = regexp(outSentence, '\((?:.)*\)', 'match');
+  outSentence = regexprep(outSentence, '\((?:.)*\)', '(w%)');
+  %disp(outPart);
+  %disp(outSentence);
+  for l=1:length(outPart)
+      outPart{l} = regexprep(outPart{l}, '(\w*''*)(\-*\!*\?*\.*)', '$1 $2');
+      outPart{l} = regexprep(outPart{l}, '(\-*\!*\?*\.*)(\w*''*)', '$1 $2');
+      outPart{l} = regexprep(outPart{l}, '([Dd]'')\s*(\w*)', '$1$2');
+      outSentence = regexprep(outSentence, '\(w%\)', outPart{l}, 'once');
+  end
+      
+  outSentence = regexprep(outSentence, '[\(\)\"\?\!\,\:\;\<\>\=\+\\\/]', ' $0');
+  outSentence = regexprep(outSentence, '([\(\)\"\?\!\[\,\:\;\<\>\=\]\+\\\/])(\w)', '$1 $2');
+  outSentence = regexprep(outSentence, '(\.)(\w)', '$1 $2');
   outSentence = regexprep(outSentence, '(\w)(\.)', '$1 $2');
+  %disp(outSentence);
   
   switch language
    case 'e'
     outSentence = regexprep(outSentence, '(''[^t])', ' $0');
     outSentence = regexprep(outSentence, '(n''t)', ' $0');
     
-
    case 'f'    
     outSentence = regexprep(outSentence, '(l'')', '$0 ');
     outSentence = regexprep(outSentence, '([bcfghjkmnpqrstvwxz]'')', '$0 ');
@@ -48,5 +61,6 @@ function outSentence = preprocess( inSentence, language )
   end
 
   % change unpleasant characters to codes that can be keys in dictionaries
-  outSentence = convertSymbols( outSentence );
 
+  %outSentence = convertSymbols( outSentence );
+  outSentence = regexprep(outSentence, '\s+', ' '); 

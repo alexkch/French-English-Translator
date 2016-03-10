@@ -31,12 +31,11 @@ global CSC401_A2_DEFNS
 LM=struct();
 LM.uni = struct();
 LM.bi = struct();
-
 SENTSTARTMARK = 'SENTSTART'; 
 SENTENDMARK = 'SENTEND';
 
 DD = dir( [ dataDir, filesep, '*', language] );
-
+%DD = dir([dataDir]);
 disp([ dataDir, filesep, '.*', language] );
 
 for iFile=1:length(DD)
@@ -45,12 +44,34 @@ for iFile=1:length(DD)
 
   for l=1:length(lines)
 
+    %disp(lines{l});  
     processedLine =  preprocess(lines{l}, language);
     words = strsplit(' ', processedLine );
-    
-    % TODO: THE STUDENT IMPLEMENTS THE FOLLOWING
+    disp(words);
+    for k=1:length(words)
 
-    % TODO: THE STUDENT IMPLEMENTED THE PRECEDING
+        if isfield(LM.uni, words{k}) 
+            LM.uni.(words{k}) =  LM.uni.(words{k}) + 1;
+        else
+            LM.uni.(words{k}) = 1;
+        end   
+        if k ~= length(words)
+            if isfield(LM.bi, words{k}) 
+                if isfield(LM.bi.(words{k}), words{k+1})
+                    LM.bi.(words{k}).(words{k+1}) = LM.bi.(words{k}).(words{k+1}) + 1;
+                else
+                    LM.bi.(words{k}).(words{k+1}) = 1;
+                end
+            else
+                LM.bi.(words{k}) = struct();
+                LM.bi.(words{k}).(words{k+1}) = 1;
+            end
+        else
+            if isfield(LM.bi, (words{k})) == 0
+                LM.bi.(words{k}) = struct();
+            end
+        end
+    end
   end
 end
 
