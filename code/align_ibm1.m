@@ -148,6 +148,7 @@ function t = em_step(t, eng, fre)
 %
   
   % TODO: your code goes here
+  disp(t)
 tcount = struct();
 total = struct();
 for l=2:length(eng)-1
@@ -185,7 +186,11 @@ for c=2:length(fieldnames(total))-1
     e_dom = fieldnames(total);
     for g=2:length(fieldnames(tcount))-1
         f_dom = fieldnames(tcount);
-        t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});
+        if isfield(tcount, (e_dom{c}))
+            if isfield(tcount.(e_dom{c}), (f_dom{g}))       
+                t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});
+            end
+        end
     end
 end
 end
