@@ -76,7 +76,23 @@ function [eng, fre] = read_hansard(mydir, numSentences)
   %fre = {};
 
   % TODO: your code goes here.
+  
+eng = {};
+fre = {};
 
+DE = dir( [ mydir, filesep, '*', 'e'] );
+DF = dir( [ mydir, filesep, '*', 'f'] );
+
+for iFile=1:length(DE)
+
+  e_lines = textread([mydir, filesep, DE(iFile).name], '%s','delimiter','\n');
+  f_lines = textread([mydir, filesep, DF(iFile).name], '%s','delimiter','\n');
+
+  for l=1:numSentences
+    eng{l} = strsplit(' ', preprocess(e_lines{l}, 'e'));
+    fre{l} = strsplit(' ', preprocess(f_lines{l}, 'f'));
+  end
+end 
 end
 
 
@@ -123,6 +139,40 @@ function t = em_step(t, eng, fre)
 %
   
   % TODO: your code goes here
+tcount = struct();
+total = struct();
+for l=1:length(eng)
+    for i=1:length(fre)
+        for a=1:length(eng{l})
+            total.(eng{l}{a}) = 0;
+            for b=1:length(fre{i})
+                tcount.(fre{i}{b}) = struct();
+                tcount.(fre{i}{b}).(eng{l}{a}) = 0;
+            end
+        end
+    end
+end
+for l=1:length(eng)
+    for i=1:length(fre)
+        u_f = unique(fre{i});
+        u_e = unique(eng{l});
+        for q=1:length(u_f)
+            denom_c = 0;
+            for j=1:length(u_e)
+                denom_c = denom_c + t.(u_f{q}).(u_e{j}) * sum(u_f == u_f{q});
+            end
+            for j2=1:length(u_e)
+                tcount.(u_f{q}).(u_e{j2}) = (t.(u_e{j2}).(u_f{q}) * sum(u_f == u_f{q}) * sum(u_e == u_e{j2}))/denom_c;
+                total.(u_e{j2}) =  (t.(u_e{j2}).(u_f{q}) * sum(u_f == u_f{q}) * sum(u_e == u_e{j2}))/denom_c;
+            end
+        end
+    end    
+end
+for c=1:length(total)
+    for g=1:length(tcount)
+        t.(total{c}).(tcount{g}) = tcount.(tcount{g})/total.total(total{c});
+    end
+end
 end
 
 

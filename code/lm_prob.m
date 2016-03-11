@@ -45,53 +45,73 @@ function logProb = lm_prob(sentence, LM, type, delta, vocabSize)
   end
 
   words = strsplit(' ', sentence);
-
+  
+  SENTSTARTMARK = 'SENTSTART';
+  SENTENDMARK = 'SENTEND';
   % loop through words in the sentence
-  for l=1:length(words)
+  for l=2:length(words)
+
       % if first word
-      if l==1
-          % count(sentencestart, wt) or bigram (sentencestart, wt) + smoothing
-          num = LM.bi.SENTSTARTMARK.words{l} + delta;
-          
-          % count(sentencestart) or unigram (sentencestart)
-          denom = LM.uni.SENTSTARTMARK + delta;
-          
-          % check if 0/0
-          if num == 0 && denom == 0
-              logProb = 0;
-          else 
+      if l==2
+          if isfield(LM.bi.(SENTSTARTMARK), (words{l}))
+              % count(sentencestart, wt) or bigram (sentencestart, wt) + smoothing
+              num = LM.bi.(SENTSTARTMARK).(words{l}) + delta;
+              
+              % count(sentencestart) or unigram(sentencestart) + smoothing
+              denom = LM.uni.(SENTSTARTMARK) + delta*vocabSize;
+              
+              % initialize first word
               logProb = num/denom;
-          end
+          else
+              num = delta;
+              denom = delta*vocabSize;
+              logProb = num/denom;
+          end 
           
       % if last word
       elseif l == length(words)
-          % count(wt, endofsentence) or bigram (wt, endofsentence) + smoothing
-          num = (LM.bi.words{l}.SENTENDMARK + delta);
-          
-          % count(wt-1) or unigram (wt-1) + smoothing
-          denom = (LM.uni.words{l-1} + delta*vocabSize);
-          
-          %check if 0/0
-          if num == 0 && denom == 0
-              logProb = 0;
-          else 
-              logProb = logProb * num/denom;
+          if isfield(LM.uni, (words{l-1}))
+              if isfield(LM.bi.(words{l-1}), (SENTENDMARK))
+                  % count(wt, endofsentence) or bigram (wt, endofsentence) + smoothing
+                  num = (LM.bi.(words{l-1}).(SENTENDMARK) + delta);
+
+                  % count(wt-1) or unigram (wt-1) + smoothing
+                  denom = (LM.uni.(words{l-1}) + delta*vocabSize);
+              end
+          else
+              num = delta;
+              denom = delta*vocabSize;
+              logProb = num/denom;
           end
+              
       % rest of the words
       else
-          % count(wt-1, wt) or bigram (wt-1, wt) + smoothing
-          num = (LM.bi.words{l-1}.words{l} + delta);
-          
-          % count(wt-1) or unigram (wt-1) + smoothing
-          denom = (LM.uni.words{l-1} + delta*vocabSize);
-          
-          % check if 0/0
-          if num == 0 && denom == 0
-              logProb = 0;
-          else 
-              logProb = logProb * num/denom;
+          if isfield(LM.uni, (words{l-1}))
+              
+              if isfield(LM.bi.(words{l-1}), words{l})
+
+                  % count(wt-1, wt) or bigram (wt-1, wt) + smoothing
+                  num = (LM.bi.(words{l-1}).(words{l}) + delta);
+
+                  % count(wt-1) or unigram (wt-1) + smoothing
+                  denom = (LM.uni.(words{l-1}) + delta*vocabSize);
+              end
+
+          else
+              num = delta;
+              denom = delta*vocabSize;
+              logProb = num/denom;
           end
+      end 
+      
+      % check if 0/0
+      if num == 0 && denom == 0
+          logProb = 0;
+      else 
+          if l ~= 2
+            logProb = logProb * num/denom;
+          end 
       end
   end
-  logProb = log2(logProb);
+logProb = log2(logProb);
 return
