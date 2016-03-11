@@ -87,7 +87,33 @@ function AM = initialize(eng, fre)
 %
     AM = {}; % AM.(english_word).(foreign_word)
 
-    % TODO: your code goes here
+    AM.SENTSTART.SENSTART = 1;
+    AM.SENTEND.SENTEND = 1;
+    
+    for l=1:length(eng)
+        
+        english_words = eng{l}
+        french_words = fre{l}
+        
+        
+        for k=2:length(english_words)-1
+            if isfield(AM, english_words{k}) ~= 1
+                AM.(english_words{k}) = struct()
+            end
+            for j=2:length(french_words)-1
+                AM.(english_words{k}).(french_words{j}) = 0;
+            end 
+        end
+    end
+    
+    en_fields = fieldnames(AM);
+    for i=1:length(en_fields)
+        fr_fields = fieldnames(en_fields{i});
+        for j=1:length(fr_fields)
+            AM.(en_fields{i}).(fr_fields{j}) = 1/length(fr_fields);
+        end
+    end
+    
 
 end
 
