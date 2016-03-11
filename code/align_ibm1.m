@@ -142,29 +142,29 @@ function t = em_step(t, eng, fre)
   % TODO: your code goes here
 tcount = struct();
 total = struct();
-for l=1:length(eng)
-    for i=1:length(fre)
-        for a=1:length(eng{l})
+for l=2:length(eng)-1
+    for i=2:length(fre)-1
+        for a=2:length(eng{l})-1
             total.(eng{l}{a}) = 0;
-            for b=1:length(fre{i})
+            for b=2:length(fre{i})-1
                 tcount.(fre{i}{b}) = struct();
                 tcount.(fre{i}{b}).(eng{l}{a}) = 0;
             end
         end
     end
 end
-for l=1:length(eng)
-    for i=1:length(fre)
+for l=2:length(eng)-1
+    for i=2:length(fre)-1
         u_f = unique(fre{i});
         u_e = unique(eng{l});
-        for q=1:length(u_f)
+        for q=2:length(u_f)-1
             denom_c = 0;
-            for j=1:length(u_e)
+            for j=2:length(u_e)-1
                 if isfield(t.(u_e{j}), (u_f{q}))
                     denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(u_f{q},fre{i}));
                 end
             end
-            for j2=1:length(u_e)
+            for j2=2:length(u_e)-1
                 if isfield(t.(u_e{j2}), (u_f{q}))
                     tcount.(u_f{q}).(u_e{j2}) = (t.(u_e{j2}).(u_f{q}) * sum(ismember(u_f{q},fre{i})) * sum(ismember(u_e{j2}, eng{l})))/denom_c;
                     total.(u_e{j2}) =  (t.(u_e{j2}).(u_f{q}) * sum(ismember(u_f{q}, fre{i})) * sum(ismember(u_e{j2}, eng{l})))/denom_c;
@@ -173,10 +173,11 @@ for l=1:length(eng)
         end
     end    
 end
-for c=1:length(total)
-    disp(total.eng{c})
-    for g=1:length(tcount)
-        t.(total{c}).(tcount{g}) = tcount.(tcount{g})/total.(total.total{c});
+for c=2:length(fieldnames(total))-1
+    e_dom = fieldnames(total);
+    for g=2:length(fieldnames(tcount))-1
+        f_dom = fieldnames(tcount);
+        t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});
     end
 end
 end
