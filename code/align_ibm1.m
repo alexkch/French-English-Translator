@@ -90,7 +90,9 @@ for iFile=1:length(DE)
 
   for l=1:numSentences
     eng{l} = strsplit(' ', preprocess(e_lines{l}, 'e'));
+    disp(eng{l})
     fre{l} = strsplit(' ', preprocess(f_lines{l}, 'f'));
+    disp(fre{l})
   end
 end 
 end
@@ -104,33 +106,32 @@ function AM = initialize(eng, fre)
     AM = {}; % AM.(english_word).(foreign_word)
 
     AM.SENTSTART.SENSTART = 1;
-    AM.SENTEND.SENTEND = 1;
+    
     
     for l=1:length(eng)
         
-        english_words = eng{l}
-        french_words = fre{l}
+        english_words = eng{l};
+        french_words = fre{l};
         
         
         for k=2:length(english_words)-1
             if isfield(AM, english_words{k}) ~= 1
-                AM.(english_words{k}) = struct()
+                AM.(english_words{k}) = struct();
             end
             for j=2:length(french_words)-1
                 AM.(english_words{k}).(french_words{j}) = 0;
             end 
         end
     end
-    
+    AM.SENTEND.SENTEND = 1;
     en_fields = fieldnames(AM);
     for i=1:length(en_fields)
-        fr_fields = fieldnames(en_fields{i});
+        fr_fields = fieldnames(AM.(en_fields{i}));
         for j=1:length(fr_fields)
             AM.(en_fields{i}).(fr_fields{j}) = 1/length(fr_fields);
         end
     end
     
-
 end
 
 function t = em_step(t, eng, fre)
@@ -159,18 +160,23 @@ for l=1:length(eng)
         for q=1:length(u_f)
             denom_c = 0;
             for j=1:length(u_e)
-                denom_c = denom_c + t.(u_f{q}).(u_e{j}) * sum(u_f == u_f{q});
+                if isfield(t.(u_e{j}), (u_f{q}))
+                    denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(u_f{q},fre{i}));
+                end
             end
             for j2=1:length(u_e)
-                tcount.(u_f{q}).(u_e{j2}) = (t.(u_e{j2}).(u_f{q}) * sum(u_f == u_f{q}) * sum(u_e == u_e{j2}))/denom_c;
-                total.(u_e{j2}) =  (t.(u_e{j2}).(u_f{q}) * sum(u_f == u_f{q}) * sum(u_e == u_e{j2}))/denom_c;
+                if isfield(t.(u_e{j2}), (u_f{q}))
+                    tcount.(u_f{q}).(u_e{j2}) = (t.(u_e{j2}).(u_f{q}) * sum(ismember(u_f{q},fre{i})) * sum(ismember(u_e{j2}, eng{l})))/denom_c;
+                    total.(u_e{j2}) =  (t.(u_e{j2}).(u_f{q}) * sum(ismember(u_f{q}, fre{i})) * sum(ismember(u_e{j2}, eng{l})))/denom_c;
+                end
             end
         end
     end    
 end
 for c=1:length(total)
+    disp(total.eng{c})
     for g=1:length(tcount)
-        t.(total{c}).(tcount{g}) = tcount.(tcount{g})/total.total(total{c});
+        t.(total{c}).(tcount{g}) = tcount.(tcount{g})/total.(total.total{c});
     end
 end
 end
