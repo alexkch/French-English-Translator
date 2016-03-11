@@ -83,16 +83,24 @@ fre = {};
 DE = dir( [ mydir, filesep, '*', 'e'] );
 DF = dir( [ mydir, filesep, '*', 'f'] );
 
-for iFile=1:length(DE)
+for iFile=1:min(length(DE), length(DF))
 
   e_lines = textread([mydir, filesep, DE(iFile).name], '%s','delimiter','\n');
   f_lines = textread([mydir, filesep, DF(iFile).name], '%s','delimiter','\n');
-
-  for l=1:numSentences
-    eng{l} = strsplit(' ', preprocess(e_lines{l}, 'e'));
-    disp(eng{l})
-    fre{l} = strsplit(' ', preprocess(f_lines{l}, 'f'));
-    disp(fre{l})
+  len = 1;
+  if numSentences <= min(length(e_lines), length(f_lines))
+      for l=1:numSentences
+        eng{len} = strsplit(' ', preprocess(e_lines{l}, 'e'));
+        fre{len} = strsplit(' ', preprocess(f_lines{l}, 'f'));
+        len = len+1;
+      end
+  else
+      for q=1:min(length(e_lines), length(f_lines))
+        eng{len} = strsplit(' ', preprocess(e_lines{q}, 'e'));
+        fre{len} = strsplit(' ', preprocess(f_lines{q}, 'f'));
+        len = len+1;
+      end
+      numSentences = numSentences - length(DE);
   end
 end 
 end
