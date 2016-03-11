@@ -90,9 +90,7 @@ for iFile=1:length(DE)
 
   for l=1:numSentences
     eng{l} = strsplit(' ', preprocess(e_lines{l}, 'e'));
-    disp(eng{l})
     fre{l} = strsplit(' ', preprocess(f_lines{l}, 'f'));
-    disp(fre{l})
   end
 end 
 end
