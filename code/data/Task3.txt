@@ -9,3 +9,6 @@ mle 20.0187
 0.1 43.4033
 0.5 79.7900
 1   111.4080
+
+As the add-delta value increases, so does the perplexity. This makes sense since as the 
+perplexity increases, the predictions get worse but the predictions generalize much better.
