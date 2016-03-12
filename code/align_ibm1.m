@@ -190,7 +190,7 @@ for l=1:length(eng)
             end
         end
         for e2=1:length(unique_english)
-            if isfield(t.(unique_english{e}), (unique_french{f}))
+            if isfield(t.(unique_english{e2}), (unique_french{f}))
                 p = t.(unique_english{e2}).(unique_french{f});
             
                 if isfield(tcount, (unique_english{e2}))
