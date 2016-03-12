@@ -152,53 +152,46 @@ tcount = struct();
 total = struct();
 for l=1:length(eng)
     for a=2:length(eng{l})-1
-        for i=1:length(fre)  
-            for b=2:length(fre{i})-1
-                if ~isfield(tcount, (eng{l}{a}))
-                    tcount.(eng{l}{a}) = struct();
-                else
-                    tcount.(eng{l}{a}).(fre{i}{b}) = 0;
-                end
+        for b=2:length(fre{l})-1
+            if ~isfield(tcount, (eng{l}{a}))
+                tcount.(eng{l}{a}) = struct();
+            else
+                tcount.(eng{l}{a}).(fre{l}{b}) = 0;
             end
         end
         total.(eng{l}{a}) = 0;
     end
 end
+
 for l=1:length(eng)
-    for i=1:length(fre)
-        e_words = eng{l};
-        f_words = fre{i};
-        e_words = e_words(2:end-1);
-        f_words = f_words(2:end-1);
-        
-        u_e = unique(e_words);
-        u_f = unique(f_words);
-        for q=1:length(u_f)
-            denom_c = 0;
-            for j=1:length(u_e)
-                if isfield(t.(u_e{j}), (u_f{q}))
-                    denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})); 
-                end
-            end
-            for j2=1:length(u_e)
-                if isfield(t.(u_e{j2}), (u_f{q}))
-                    tcount.(u_f{q}).(u_e{j2}) = t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;
-                    total.(u_e{j2}) =  t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;        
-                end
+    e_words = eng{l};
+    f_words = fre{l};
+    e_words = e_words(2:end-1);
+    f_words = f_words(2:end-1);
+
+    u_e = unique(e_words);
+    u_f = unique(f_words);
+    for q=1:length(u_f)
+        denom_c = 0;
+        for j=1:length(u_e)
+            if isfield(t.(u_e{j}), (u_f{q}))
+                denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(fre{l}, u_f{q})); 
             end
         end
-    end    
+        for j2=1:length(u_e)
+            if isfield(t.(u_e{j2}), (u_f{q}))
+                tcount.(u_f{q}).(u_e{j2}) = t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{l}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;
+                total.(u_e{j2}) =  t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{l}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;        
+            end
+        end
+    end
+   
 end
-
 for c=1:length(fieldnames(total))
     e_dom = fieldnames(total);
-    for g=1:length(fieldnames(tcount))
-        f_dom = fieldnames(tcount);   
-        if isfield(t.(e_dom{c}), (f_dom{g}))
-                   
-            t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});
-        end
-            
+    for g=1:length(fieldnames(tcount.(e_dom{c})))
+        f_dom = fieldnames(tcount.(e_dom{c}));
+        t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});  
     end
 end
 end
