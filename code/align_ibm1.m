@@ -41,6 +41,7 @@ function AM = align_ibm1(trainDir, numSentences, maxIter, fn_AM)
 
   % Iterate between E and M steps
   for iter=1:maxIter,
+    disp(iter)
     AM = em_step(AM, eng, fre);
   end
 
@@ -148,41 +149,44 @@ function t = em_step(t, eng, fre)
 %
   
   % TODO: your code goes here
+
 tcount = struct();
 total = struct();
 for l=1:length(eng)
-    for a=2:length(eng{l})-1
-        for b=2:length(fre{l})-1
-            if ~isfield(tcount, (eng{l}{a}))
-                tcount.(eng{l}{a}) = struct();
-            else
-                tcount.(eng{l}{a}).(fre{l}{b}) = 0;
+    ue = unique(eng{l});
+    uf = unique(fre{l});
+    for a=1:length(ue)
+        for b=1:length(uf)
+            if ~isfield(tcount, (ue{a}))
+                tcount.(ue{a}) = struct();
+            end
+            if ~isfield(tcount.(ue{a}), (uf{b}))
+                tcount.(ue{a}).(uf{b}) = 0;
             end
         end
-        total.(eng{l}{a}) = 0;
+        total.(ue{a}) = 0;
     end
+
 end
 
 for l=1:length(eng)
     e_words = eng{l};
     f_words = fre{l};
-    e_words = e_words(2:end-1);
-    f_words = f_words(2:end-1);
+    E = e_words(2:end-1);
+    F = f_words(2:end-1);
 
-    u_e = unique(e_words);
-    u_f = unique(f_words);
-    for q=1:length(u_f)
+    unique_english = unique(E);
+    unique_french = unique(F);
+    for f=1:length(unique_french)
         denom_c = 0;
-        for j=1:length(u_e)
-            if isfield(t.(u_e{j}), (u_f{q}))
-                denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(fre{l}, u_f{q})); 
-            end
+        for e=1:length(unique_english)
+            p = t.(unique_english{e}).(unique_french{f});
+            denom_c = denom_c + p * sum(ismember(f_words, unique_french{f}));   
         end
-        for j2=1:length(u_e)
-            if isfield(t.(u_e{j2}), (u_f{q}))
-                tcount.(u_f{q}).(u_e{j2}) = t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{l}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;
-                total.(u_e{j2}) =  t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{l}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;        
-            end
+        for e2=1:length(unique_english)
+            p = t.(unique_english{e2}).(unique_french{f});
+            tcount.(unique_english{e2}).(unique_french{f}) = tcount.(unique_english{e2}).(unique_french{f}) + p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;
+            total.(unique_english{e2}) = total.(unique_english{e2}) +  p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;        
         end
     end
    
