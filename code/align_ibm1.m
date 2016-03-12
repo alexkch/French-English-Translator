@@ -151,14 +151,17 @@ function t = em_step(t, eng, fre)
 tcount = struct();
 total = struct();
 for l=1:length(eng)
-    for i=1:length(fre)
-        for a=2:length(eng{l})-1
+    for a=2:length(eng{l})-1
+        for i=1:length(fre)  
             for b=2:length(fre{i})-1
-                tcount.(eng{l}{a}) = struct();
-                tcount.(eng{l}{a}).(fre{i}{b}) = 0;
+                if ~isfield(tcount, (eng{l}{a}))
+                    tcount.(eng{l}{a}) = struct();
+                else
+                    tcount.(eng{l}{a}).(fre{i}{b}) = 0;
+                end
             end
-            total.(eng{l}{a}) = 0;
         end
+        total.(eng{l}{a}) = 0;
     end
 end
 for l=1:length(eng)
@@ -170,32 +173,32 @@ for l=1:length(eng)
         
         u_e = unique(e_words);
         u_f = unique(f_words);
-        disp(u_e)
-        disp(u_f)
         for q=1:length(u_f)
             denom_c = 0;
             for j=1:length(u_e)
                 if isfield(t.(u_e{j}), (u_f{q}))
-                    denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(fre{i}, u_f{q}));
-            
+                    denom_c = denom_c + t.(u_e{j}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})); 
                 end
             end
             for j2=1:length(u_e)
                 if isfield(t.(u_e{j2}), (u_f{q}))
                     tcount.(u_f{q}).(u_e{j2}) = t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;
-                    total.(u_e{j2}) =  t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;
-            
+                    total.(u_e{j2}) =  t.(u_e{j2}).(u_f{q}) * sum(ismember(fre{i}, u_f{q})) * sum(ismember(eng{l}, u_e{j2}))/denom_c;        
                 end
             end
         end
     end    
 end
+
 for c=1:length(fieldnames(total))
     e_dom = fieldnames(total);
     for g=1:length(fieldnames(tcount))
-        f_dom = fieldnames(tcount);          
-        t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});
-
+        f_dom = fieldnames(tcount);   
+        if isfield(t.(e_dom{c}), (f_dom{g}))
+                   
+            t.(e_dom{c}).(f_dom{g}) = tcount.(e_dom{c}).(f_dom{g})/total.(e_dom{c});
+        end
+            
     end
 end
 end
