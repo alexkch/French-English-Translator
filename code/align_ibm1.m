@@ -83,17 +83,21 @@ fre = {};
 
 DE = dir( [ mydir, filesep, '*', 'e'] );
 DF = dir( [ mydir, filesep, '*', 'f'] );
-
+len = 1;
+original = numSentences;
 for iFile=1:min(length(DE), length(DF))
 
   e_lines = textread([mydir, filesep, DE(iFile).name], '%s','delimiter','\n');
   f_lines = textread([mydir, filesep, DF(iFile).name], '%s','delimiter','\n');
-  len = 1;
+  
   if numSentences <= min(length(e_lines), length(f_lines))
       for l=1:numSentences
         eng{len} = strsplit(' ', preprocess(e_lines{l}, 'e'));
-        fre{len} = strsplit(' ', preprocess(f_lines{l}, 'f'));
+        fre{len} = strsplit(' ', preprocess(f_lines{l}, 'f'));      
         len = len+1;
+      end
+      if original <= len
+            return
       end
   else
       for q=1:min(length(e_lines), length(f_lines))
@@ -101,7 +105,7 @@ for iFile=1:min(length(DE), length(DF))
         fre{len} = strsplit(' ', preprocess(f_lines{q}, 'f'));
         len = len+1;
       end
-      numSentences = numSentences - length(DE);
+      numSentences = numSentences - length(e_lines);
   end
 end 
 end
@@ -185,8 +189,10 @@ for l=1:length(eng)
         end
         for e2=1:length(unique_english)
             p = t.(unique_english{e2}).(unique_french{f});
-            tcount.(unique_english{e2}).(unique_french{f}) = tcount.(unique_english{e2}).(unique_french{f}) + p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;
-            total.(unique_english{e2}) = total.(unique_english{e2}) +  p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;        
+            if isfield(tcount, (unique_english{e2}))
+                tcount.(unique_english{e2}).(unique_french{f}) = tcount.(unique_english{e2}).(unique_french{f}) + p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;
+                total.(unique_english{e2}) = total.(unique_english{e2}) +  p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;        
+            end
         end
     end
    
