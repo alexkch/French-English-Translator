@@ -184,14 +184,19 @@ for l=1:length(eng)
     for f=1:length(unique_french)
         denom_c = 0;
         for e=1:length(unique_english)
-            p = t.(unique_english{e}).(unique_french{f});
-            denom_c = denom_c + p * sum(ismember(f_words, unique_french{f}));   
+            if isfield(t.(unique_english{e}), (unique_french{f}))
+                p = t.(unique_english{e}).(unique_french{f});
+                denom_c = denom_c + p * sum(ismember(f_words, unique_french{f}));   
+            end
         end
         for e2=1:length(unique_english)
-            p = t.(unique_english{e2}).(unique_french{f});
-            if isfield(tcount, (unique_english{e2}))
-                tcount.(unique_english{e2}).(unique_french{f}) = tcount.(unique_english{e2}).(unique_french{f}) + p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;
-                total.(unique_english{e2}) = total.(unique_english{e2}) +  p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;        
+            if isfield(t.(unique_english{e}), (unique_french{f}))
+                p = t.(unique_english{e2}).(unique_french{f});
+            
+                if isfield(tcount, (unique_english{e2}))
+                    tcount.(unique_english{e2}).(unique_french{f}) = tcount.(unique_english{e2}).(unique_french{f}) + p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;
+                    total.(unique_english{e2}) = total.(unique_english{e2}) +  p * sum(ismember(f_words, unique_french{f})) * sum(ismember(e_words, unique_english{e2}))/denom_c;        
+                end
             end
         end
     end
