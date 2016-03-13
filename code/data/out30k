@@ -1,0 +1,725 @@
+::::::::::::::::::::::::::::::::::OUTPUT:::::::::::::::::::::::::::::::::
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+in the real world there is nothing wrong with that PERIOD_ 
+in the real world COMMA_ there is nothing wrong with that PERIOD_ 
+in the real world COMMA_ there is nothing wrong is this PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+in the world name COMMA_ it not there to nothing of wrong to that PERIOD_ edited
+
+bleu_score @ 1 N: 0.7002142 
+
+
+CANDIDATE SENTENCE:  
+in the world name COMMA_ it not there to nothing of wrong to that PERIOD_ edited
+
+bleu_score @ 2 N: 0.2003112 
+
+
+CANDIDATE SENTENCE:  
+in the world name COMMA_ it not there to nothing of wrong to that PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+that is true for every member of parliament PERIOD_ 
+this applies to all deputies PERIOD_ 
+this applies to all members PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+that worth for all are members PERIOD_ edited
+
+bleu_score @ 1 N: 0.4007505 
+
+
+CANDIDATE SENTENCE:  
+that worth for all are members PERIOD_ edited
+
+bleu_score @ 2 N: 0.2100112 
+
+
+CANDIDATE SENTENCE:  
+that worth for all are members PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+i would think this is not at all what we want to do here PERIOD_ 
+i do not think it SINGQUOTE_s our goal PERIOD_ 
+i do nSINGQUOTE_t think this is our goal PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+i not think not that this want the our objective PERIOD_ edited
+
+bleu_score @ 1 N: 0.4151566 
+
+
+CANDIDATE SENTENCE:  
+i not think not that this want the our objective PERIOD_ edited
+
+bleu_score @ 2 N: 0.2008050 
+
+
+CANDIDATE SENTENCE:  
+i not think not that this want the our objective PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+all those in favour of the motion will please say yea PERIOD_ 
+all those in favor will please say yea PERIOD_ 
+that all those who support the motion please say yes PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+that all those who raising the motion please well say yes PERIOD_ edited
+
+bleu_score @ 1 N: 0.7710308 
+
+
+CANDIDATE SENTENCE:  
+that all those who raising the motion please well say yes PERIOD_ edited
+
+bleu_score @ 2 N: 0.6218641 
+
+
+CANDIDATE SENTENCE:  
+that all those who raising the motion please well say yes PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+the good news is that canada post is listening PERIOD_ 
+the good news is that canada post is all ears PERIOD_ 
+the good news is that canada post is all ears PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+the good new is that post canada is all edited PERIOD_ edited
+
+bleu_score @ 1 N: 0.6000000 
+
+
+CANDIDATE SENTENCE:  
+the good new is that post canada is all edited PERIOD_ edited
+
+bleu_score @ 2 N: 0.4000000 
+
+
+CANDIDATE SENTENCE:  
+the good new is that post canada is all edited PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+we have to ask why PERIOD_ 
+the question arises COMMA_ why QUESTION_ 
+the question is therefore COMMA_ why QUESTION_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+the question happen questions therefore COMMA_ why QUESTION_ edited
+
+bleu_score @ 1 N: 0.6000000 
+
+
+CANDIDATE SENTENCE:  
+the question happen questions therefore COMMA_ why QUESTION_ edited
+
+bleu_score @ 2 N: 0.5511119 
+
+
+CANDIDATE SENTENCE:  
+the question happen questions therefore COMMA_ why QUESTION_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+many liberal members come from rural ridings PERIOD_ 
+the liberal deputies are many represent a rural constituency PERIOD_ 
+the liberals are many mps represent a rural constituency PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+are members liberals are many to face of riding rural PERIOD_ edited
+
+bleu_score @ 1 N: 0.5434520 
+
+
+CANDIDATE SENTENCE:  
+are members liberals are many to face of riding rural PERIOD_ edited
+
+bleu_score @ 2 N: 0.3111119 
+
+
+CANDIDATE SENTENCE:  
+are members liberals are many to face of riding rural PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+we live in a democracy PERIOD_ 
+we live in a democracy PERIOD_ 
+we live in a democracy PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+we exciting in a democracy PERIOD_ edited
+
+bleu_score @ 1 N: 0.7000000  
+
+
+CANDIDATE SENTENCE:  
+we exciting in a democracy PERIOD_ edited
+
+bleu_score @ 2 N: 0.5976143 
+
+
+CANDIDATE SENTENCE:  
+we exciting in a democracy PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+i cannot imagine anything so ridiculous PERIOD_ 
+it is the height of ridicule 
+it is the height of ridiculous 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+is is the edited of ridiculous edited
+
+bleu_score @ 1 N: 0.4521000  
+
+
+CANDIDATE SENTENCE:  
+is is the edited of ridiculous edited
+
+bleu_score @ 2 N: 0.3783365 
+
+
+CANDIDATE SENTENCE:  
+is is the edited of ridiculous edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+in my opinion the nays have it PERIOD_ 
+in my opinion COMMA_ the nays 
+in my opinion COMMA_ not outweigh 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+to my opinion COMMA_ are no of yeas edited
+
+bleu_score @ 1 N: 0.4213333 
+
+
+CANDIDATE SENTENCE:  
+to my opinion COMMA_ are no of yeas edited
+
+bleu_score @ 2 N: 0.2886751 
+
+
+CANDIDATE SENTENCE:  
+to my opinion COMMA_ are no of yeas edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+all members of all parties are aware of these programs PERIOD_ 
+all mps from all parties are familiar with these programs 
+all members of all parties know these programs 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+all are members of all are parties throw well these programs edited
+
+bleu_score @ 1 N: 0.5111333 
+
+
+CANDIDATE SENTENCE:  
+all are members of all are parties throw well these programs edited
+
+bleu_score @ 2 N: 0.4488620 
+
+
+CANDIDATE SENTENCE:  
+all are members of all are parties throw well these programs edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+we do not intend to stop that PERIOD_ 
+we do not intend to terminate it PERIOD_ 
+we do not intend to end has it PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+we not have not of away of put end to that PERIOD_ edited
+
+bleu_score @ 1 N: 0.5813393 
+
+
+CANDIDATE SENTENCE:  
+we not have not of away of put end to that PERIOD_ edited
+
+bleu_score @ 2 N: 0.2470217 
+
+
+CANDIDATE SENTENCE:  
+we not have not of away of put end to that PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+let us meet our kyoto commitments PERIOD_ 
+let us try to honor our kyoto commitments PERIOD_ 
+let SINGQUOTE_s meet our kyoto commitments PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+edited edited our commitments of edited PERIOD_ edited
+
+bleu_score @ 1 N: 0.3000000 
+
+
+CANDIDATE SENTENCE:  
+edited edited our commitments of edited PERIOD_ edited
+
+bleu_score @ 2 N: 0.0000000 
+
+
+CANDIDATE SENTENCE:  
+edited edited our commitments of edited PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+the minister of finance has made deep cuts to provincial transfers PERIOD_ 
+the finance minister saber vengeance in transfers to the provinces PERIOD_ 
+the minister of finance has slashed tower arm in transfers to provinces PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+the minister of finance to gut to turn of SINGQUOTE_or in are transfers division provinces PERIOD_ edited
+
+bleu_score @ 1 N: 0.6315879 
+
+
+CANDIDATE SENTENCE:  
+the minister of finance to gut to turn of SINGQUOTE_or in are transfers division provinces PERIOD_ edited
+
+bleu_score @ 2 N: 0.4340173 
+
+
+CANDIDATE SENTENCE:  
+the minister of finance to gut to turn of SINGQUOTE_or in are transfers division provinces PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+let us get on with it and continue to engage in debate PERIOD_ 
+but let SINGQUOTE_s leave that and move into the heart of the debate PERIOD_ 
+but let this and enter the heart of the debate PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+but set that and rather in the heart of debate PERIOD_ edited
+
+bleu_score @ 1 N: 0.6348613 
+
+
+CANDIDATE SENTENCE:  
+but set that and rather in the heart of debate PERIOD_ edited
+
+bleu_score @ 2 N: 0.4420607 
+
+
+CANDIDATE SENTENCE:  
+but set that and rather in the heart of debate PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+we are suggesting that we could pass a better bill PERIOD_ 
+we believe it is possible to do better PERIOD_ 
+we think we can do better PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+we passed what it is possible of do better PERIOD_ edited
+
+bleu_score @ 1 N: 0.5810641 
+
+
+CANDIDATE SENTENCE:  
+we passed what it is possible of do better PERIOD_ edited
+
+bleu_score @ 2 N: 0.4606821 
+
+
+CANDIDATE SENTENCE:  
+we passed what it is possible of do better PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+this is reminiscent of the liberal way of doing things PERIOD_ 
+this is the style liberal PERIOD_ 
+it is the most pure liberal style PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+is is the more edited improving liberal PERIOD_ edited
+
+bleu_score @ 1 N: 0.3184584 
+
+
+CANDIDATE SENTENCE:  
+is is the more edited improving liberal PERIOD_ edited
+
+bleu_score @ 2 N: 0.2388438 
+
+
+CANDIDATE SENTENCE:  
+is is the more edited improving liberal PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+the prime minister will determine who the president of the council will be PERIOD_ 
+we SINGQUOTE_m back there COMMA_ and the prime minister will determine who is the chairman of the board PERIOD_ 
+we will be back COMMA_ and the prime minister will determine who is the chairman of the board PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+we there edited COMMA_ and the prime minister going market who is the speaker of treasury PERIOD_ edited
+
+bleu_score @ 1 N: 0.5468462 
+
+
+CANDIDATE SENTENCE:  
+we there edited COMMA_ and the prime minister going market who is the speaker of treasury PERIOD_ edited
+
+bleu_score @ 2 N: 0.4155816 
+
+
+CANDIDATE SENTENCE:  
+we there edited COMMA_ and the prime minister going market who is the speaker of treasury PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+clearly it is a conflict of interest situation PERIOD_ 
+clearly this would be a conflict of interest PERIOD_ 
+it is clear that this would be a conflict of interest PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+it is clear that that edited a edited payments PERIOD_ edited
+
+bleu_score @ 1 N: 0.5973651 
+
+
+CANDIDATE SENTENCE:  
+it is clear that that edited a edited payments PERIOD_ edited
+
+bleu_score @ 2 N: 0.4430179 
+
+
+CANDIDATE SENTENCE:  
+it is clear that that edited a edited payments PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+we welcome the opportunity PERIOD_ 
+we are looking forward to these new opportunities PERIOD_ 
+we welcome these new perspectives PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+we we celebrate of these new opportunities PERIOD_ edited
+
+bleu_score @ 1 N: 0.4971330 
+
+
+CANDIDATE SENTENCE:  
+we we celebrate of these new opportunities PERIOD_ edited
+
+bleu_score @ 2 N: 0.4084364 
+
+
+CANDIDATE SENTENCE:  
+we we celebrate of these new opportunities PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+i declare the motion lost PERIOD_ 
+i declare the motion rejected PERIOD_ 
+i declare the motion defeated PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+i declare the motion defeated PERIOD_ edited
+
+bleu_score @ 1 N: 0.6571429 
+
+
+CANDIDATE SENTENCE:  
+i declare the motion defeated PERIOD_ edited
+
+bleu_score @ 2 N: 0.6451543 
+
+
+CANDIDATE SENTENCE:  
+i declare the motion defeated PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+and more than five members having risen COLON_ 
+and more than five deputies are being leves COLON_ 
+and more than five members to the students COLON_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+and more of five members my having risen COLON_ edited
+
+bleu_score @ 1 N: 0.7555555
+
+
+CANDIDATE SENTENCE:  
+and more of five members my having risen COLON_ edited
+
+bleu_score @ 2 N: 0.3077734 
+
+
+CANDIDATE SENTENCE:  
+and more of five members my having risen COLON_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+i do not think a union is the key to solving the problem PERIOD_ 
+i do not think this is the solution of the problem PERIOD_ 
+i do nSINGQUOTE_t think this is the solution of the problem PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+i not think not that this want the solution of problem PERIOD_ edited
+
+bleu_score @ 1 N: 0.5935873 
+
+
+CANDIDATE SENTENCE:  
+i not think not that this want the solution of problem PERIOD_ edited
+
+bleu_score @ 2 N: 0.4118835 
+
+
+CANDIDATE SENTENCE:  
+i not think not that this want the solution of problem PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+i commend the member for winnipeg centre for bringing forward this bill PERIOD_ 
+i congratulate the mp for winnipeg centre have presented the bill PERIOD_ 
+i commend the member for winnipeg have introduced the bill PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+i commend the member of sharing term presented this bill of bill PERIOD_ edited
+
+bleu_score @ 1 N: 0.5444286 
+
+
+CANDIDATE SENTENCE:  
+i commend the member of sharing term presented this bill of bill PERIOD_ edited
+
+bleu_score @ 2 N: 0.4088072 
+
+
+CANDIDATE SENTENCE:  
+i commend the member of sharing term presented this bill of bill PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
+
+
+_______________________________________________________
+:::REFERENCES::: 
+1. E_lines Trans 2. Google Trans 3. Bluemix Trans
+something has to change PERIOD_ 
+it has to change PERIOD_ 
+it must change PERIOD_ 
+
+AM sentence_length: 30000
+
+CANDIDATE SENTENCE:  
+it must that way changed PERIOD_ edited
+
+bleu_score @ 1 N: 0.4936550 
+
+
+CANDIDATE SENTENCE:  
+it must that way changed PERIOD_ edited
+
+bleu_score @ 2 N: 0.2083032 
+
+
+CANDIDATE SENTENCE:  
+it must that way changed PERIOD_ edited
+
+bleu_score @ 3 N: 0.0000000 
+
+
